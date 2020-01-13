@@ -4,13 +4,58 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Home
+      Myshoplist
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card class="welcome-card">
+ <ion-content>
+	<div id="barraPrincipal">
+		<div id="formulario">
+			<input type="text" id="artic" name="artic" >
+			<!-- <input type="text" id="artic" name="artic" (keyup)='checkArt($event)'> -->
+
+			<!-- <button (click)='checkArt(artic.value)'>Añadir a la lista</button> -->
+			<button >Añadir</button>
+			<!-- <button (click)="addArticleDesp();">Añadir</button> -->
+
+			 <div #listaArticulos *ngIf="visible" class="visible" >
+
+						<div >  </div>
+						<!-- <div *ngFor="let encontrado of lista" (click)="selectArt($event);"> {{encontrado}} </div> -->
+
+
+			</div>
+		</div>
+	</div>
+	<div id="tablaArticulos">
+		<table class="table table-striped tabla_principal" id="articulos" cellpadding="0" cellspacing="0">
+			<tbody>
+				<tr *ngFor="let articulo of articulos; let odd = odd" [ngClass]="{odd:odd}">
+				 <td><button (click)='itemPurchased(articulo.id)'>Comprado</button></td>
+
+				<td>{{ articulo.name }}</td>
+
+
+			</tr>
+
+		</tbody>
+		</table>
+
+		<h2>Artículos comprados</h2>
+		<button >Eliminar comprados</button>
+		<!-- <button (click)="deleteArt();">Eliminar comprados</button> -->
+		<table class="table table-striped tabla_principal" id="articulosComp" cellpadding="0" cellspacing="0">
+				<tbody>
+					<tr *ngFor="let articulo of articulosComp; let odd = odd" [ngClass]="{odd:odd}">
+						<td>{{ articulo.name }}</td>
+					</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+ <!-- <ion-card class="welcome-card">
     <img src="/assets/shapes.svg" alt=""/>
     <ion-card-header>
       <ion-card-subtitle>Get Started</ion-card-subtitle>
@@ -22,9 +67,9 @@
         and components. Check out some of the resources below for next steps.
       </p>
     </ion-card-content>
-  </ion-card>
+  </ion-card> -->
 
-  <ion-list lines="none">
+  <!-- <ion-list lines="none">
     <ion-list-header>
       <ion-label>Resources</ion-label>
     </ion-list-header>
@@ -44,5 +89,5 @@
       <ion-icon slot="start" color="medium" name="color-fill"></ion-icon>
       <ion-label>Theme Your App</ion-label>
     </ion-item>
-  </ion-list>
+  </ion-list> -->
 </ion-content>

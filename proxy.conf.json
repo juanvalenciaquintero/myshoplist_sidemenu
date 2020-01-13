@@ -1,0 +1,8 @@
+{
+	"/myshoplist*": {
+		 "target": "http://estadisticas.dx.am",
+		 "changeOrigin": true,
+		 "secure": false,
+		 "logLevel": "debug"
+	 }
+}
