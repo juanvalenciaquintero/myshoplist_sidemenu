@@ -25,6 +25,7 @@ export class HomePage implements OnInit {
   {
 		let articulo = event.target.value;
 		let listaArt: string[] = [];
+		let datos: any;
     // setTimeout(function ()
     // {
       //console.log(articulo);
@@ -32,14 +33,15 @@ export class HomePage implements OnInit {
       {
         this.taskService.checkArt(articulo)
         .then(data =>
-        {
+				{
+						datos = data;
            console.log(data);
             if (data !== 0)
 						{
-							console.log(data.length);
-							for (var i = 0; i < data.length; i++)
+							console.log(datos.length);
+							for (var i = 0; i < datos.length; i++)
 							{
-								listaArt.push(data[i]);
+								listaArt.push(datos[i]);
 								}
               this.visible = true;
             } else
