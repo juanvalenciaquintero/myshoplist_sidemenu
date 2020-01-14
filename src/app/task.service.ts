@@ -13,6 +13,82 @@ export class TaskService {
 		console.log('Entrado en servicio');
 	}
 
+	checkArt(articulo:string)
+  {
+    const path = '/myshoplist.php?valor=3&name='+articulo;
+	//	return this.http.get<number>(path);
+		return new Promise(resolve => {
+			this.http.get(path,{
+				headers : new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+				.set("Access-Control-Allow-Origin", '*')
+				.set("Access-Control-Allow-Credentials", "true")
+				.set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT")
+				.set("Access-Control-Max-Age", "3600")
+					.set("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, remember-me")
+			})
+				.subscribe(data =>
+				{
+				resolve(data);
+			}, err => {
+				console.log(err);
+			});
+		});
+	}
+
+	addArticle(articulo: any)
+  {
+    const path = '/myshoplist.php';
+    let param =
+    {
+      'action': 'insert',
+      'artic' : articulo
+		}
+		return new Promise(resolve => {
+			this.http.post(path,param,{
+				headers : new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+				.set("Access-Control-Allow-Origin", '*')
+				.set("Access-Control-Allow-Credentials", "true")
+				.set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT")
+				.set("Access-Control-Max-Age", "3600")
+					.set("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, remember-me")
+			})
+				.subscribe(data =>
+				{
+				resolve(data);
+			}, err => {
+				console.log(err);
+			});
+		});
+  }
+
+	addArticleDesp(articulo)
+  {
+    const path = '/myshoplist.php';
+    let param =
+    {
+      'action': 'insertDesp',
+      'artic' : articulo
+		}
+		return new Promise(resolve => {
+			this.http.post(path,param,{
+				headers : new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+				.set("Access-Control-Allow-Origin", '*')
+				.set("Access-Control-Allow-Credentials", "true")
+				.set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT")
+				.set("Access-Control-Max-Age", "3600")
+					.set("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, remember-me")
+			})
+				.subscribe(data =>
+				{
+				resolve(data);
+			}, err => {
+				console.log(err);
+			});
+		});
+
+  }
+
+
 	getAllArticles()
 	{
 
@@ -77,5 +153,33 @@ export class TaskService {
 			console.log(err);
 		});
 	});
+	}
+
+	deleteArticles()
+  {
+    const path = '/myshoplist.php';
+    let param =
+    {
+      'action': 'delete',
+      'artic' : 'comprados'
+		}
+		return new Promise(resolve =>
+			{
+				this.http.post(path, param, {
+				headers : new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+				.set("Access-Control-Allow-Origin", '*')
+				.set("Access-Control-Allow-Credentials", "true")
+				.set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT")
+				.set("Access-Control-Max-Age", "3600")
+					.set("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, remember-me")
+				})
+					.subscribe(data =>
+				{
+				resolve(data);
+			}, err => {
+				console.log(err);
+			});
+		});
+    //return this.http.post(path, param, this.httpOptions);
   }
 }
