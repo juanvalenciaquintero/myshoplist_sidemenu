@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders,HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
 
-	private url = '/myshoplist.php';
+	private url = 'http://estadisticas.dx.am';
 
 	constructor(public http: HttpClient)
 	{
@@ -15,17 +15,10 @@ export class TaskService {
 
 	checkArt(articulo:string)
   {
-    const path = '/myshoplist.php?valor=3&name='+articulo;
+    const path = this.url +'/myshoplist.php?valor=3&name='+articulo;
 	//	return this.http.get<number>(path);
 		return new Promise(resolve => {
-			this.http.get(path,{
-				headers : new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
-				.set("Access-Control-Allow-Origin", '*')
-				.set("Access-Control-Allow-Credentials", "true")
-				.set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT")
-				.set("Access-Control-Max-Age", "3600")
-					.set("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, remember-me")
-			})
+			this.http.get(path)
 				.subscribe(data =>
 				{
 				resolve(data);
@@ -37,21 +30,14 @@ export class TaskService {
 
 	addArticle(articulo: any)
   {
-    const path = '/myshoplist.php';
+    const path = this.url +'/myshoplist.php';
     let param =
     {
       'action': 'insert',
       'artic' : articulo
 		}
 		return new Promise(resolve => {
-			this.http.post(path,param,{
-				headers : new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
-				.set("Access-Control-Allow-Origin", '*')
-				.set("Access-Control-Allow-Credentials", "true")
-				.set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT")
-				.set("Access-Control-Max-Age", "3600")
-					.set("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, remember-me")
-			})
+			this.http.post(path,param)
 				.subscribe(data =>
 				{
 				resolve(data);
@@ -63,21 +49,14 @@ export class TaskService {
 
 	addArticleDesp(articulo)
   {
-    const path = '/myshoplist.php';
+    const path = this.url +'/myshoplist.php';
     let param =
     {
       'action': 'insertDesp',
       'artic' : articulo
 		}
 		return new Promise(resolve => {
-			this.http.post(path,param,{
-				headers : new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
-				.set("Access-Control-Allow-Origin", '*')
-				.set("Access-Control-Allow-Credentials", "true")
-				.set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT")
-				.set("Access-Control-Max-Age", "3600")
-					.set("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, remember-me")
-			})
+			this.http.post(path,param)
 				.subscribe(data =>
 				{
 				resolve(data);
@@ -93,14 +72,7 @@ export class TaskService {
 	{
 
 		return new Promise(resolve => {
-			this.http.get(this.url+'?valor=1',{
-				headers : new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
-				.set("Access-Control-Allow-Origin", '*')
-				.set("Access-Control-Allow-Credentials", "true")
-				.set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT")
-				.set("Access-Control-Max-Age", "3600")
-					.set("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, remember-me")
-			})
+			this.http.get(this.url+'/myshoplist.php?valor=1')
 				.subscribe(data =>
 				{
 				resolve(data);
@@ -117,7 +89,7 @@ export class TaskService {
     // const path = '/myshoplist.php?valor=2';
 		// return this.http.get<Article[]>(path);
 		return new Promise(resolve => {
-			this.http.get(this.url+'?valor=2')
+			this.http.get(this.url+'/myshoplist.php?valor=2')
 				.subscribe(data =>
 				{
 				resolve(data);
@@ -129,7 +101,7 @@ export class TaskService {
 
 	updateArticle(articulo: number)
   {
-    const path = '/myshoplist.php';
+    const path = this.url + '/myshoplist.php';
     console.log(articulo);
     let param =
     {
@@ -138,14 +110,7 @@ export class TaskService {
 		}
 		return new Promise(resolve =>
 		{
-			this.http.post(path, param, {
-			headers : new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
-			.set("Access-Control-Allow-Origin", '*')
-			.set("Access-Control-Allow-Credentials", "true")
-			.set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT")
-			.set("Access-Control-Max-Age", "3600")
-				.set("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, remember-me")
-			})
+			this.http.post(path, param)
 				.subscribe(data =>
 			{
 			resolve(data);
@@ -157,7 +122,7 @@ export class TaskService {
 
 	deleteArticles()
   {
-    const path = '/myshoplist.php';
+    const path = this.url +'/myshoplist.php';
     let param =
     {
       'action': 'delete',
@@ -165,14 +130,7 @@ export class TaskService {
 		}
 		return new Promise(resolve =>
 			{
-				this.http.post(path, param, {
-				headers : new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
-				.set("Access-Control-Allow-Origin", '*')
-				.set("Access-Control-Allow-Credentials", "true")
-				.set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT")
-				.set("Access-Control-Max-Age", "3600")
-					.set("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, remember-me")
-				})
+				this.http.post(path, param)
 					.subscribe(data =>
 				{
 				resolve(data);
