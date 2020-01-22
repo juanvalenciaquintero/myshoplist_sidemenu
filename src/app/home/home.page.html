@@ -15,8 +15,8 @@
 			<input type="text" id="artic" name="artic" (keyup)='checkArt($event)'>
 
 			<!-- <button (click)='checkArt(artic.value)'>Añadir a la lista</button> -->
-			<button >Añadir</button>
-			<!-- <button (click)="addArticleDesp();">Añadir</button> -->
+			<!-- <button >Añadir</button> -->
+			<button (click)="addArticleDesp();">Añadir</button>
 
 			 <div #listaArticulos *ngIf="visible" class="visible" >
 						<div *ngFor="let encontrado of lista" (click)="selectArt($event);"> {{encontrado}} </div>
