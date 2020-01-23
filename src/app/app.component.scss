@@ -33,10 +33,6 @@
   width:175px;
 }
 
-#formulario button
-{
-  height:28px;
-}
 
 #tablaArticulos
 {
@@ -44,28 +40,53 @@
   width: 100%;
 }
 
-#articulos tr
+#articulos tr, #tablaDespensa tr
 {
 	height:40px;
  // border: 1px solid;
 }
 
-#articulos td:first-child
+#articulos td:first-child, #articulosComp td:first-child, #tablaDespensa td:first-child, #tablaDespensa td:nth-child(2)
 {
   width:80px;
 }
 
-#articulos td, #articulosComp td
+#articulos td, #articulosComp td, #tablaDespensa td
 {
   border-collapse: collapse;
-  padding:5px 5px;
+  padding:10px 10px;
 }
 
 #listaArticulos
 {
 position:absolute;
 top:100px;
+}
 
+#btnAdd
+{
+	height:29px;
+	border: 1px solid #aaa;
+}
+
+.btnComp
+{
+	height:18px;
+	border: 1px solid #aaa;
+	border-radius: 5px 5px;;
+}
+
+#comprados
+{
+	border-top: 1px solid #ccc;
+	margin-top:15px;
+}
+
+h2
+{
+	padding:10px;
+	width:60%;
+	display:inline-block;
 }
 
 .oculto

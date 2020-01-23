@@ -9,21 +9,22 @@
   $base     = '3249384_estadisticas';
   $user     = '3249384_estadisticas';
   $password = '42180200Az';
-  $server   = 'fdb26.awardspace.net';
+	$server   = 'fdb26.awardspace.net';
+
 
   //Byethost
   // $base     = 'b7_21312081_shoplist';
   // $user     = 'b7_21312081';
   // $password = '42180200';
-  // $server   = 'sql111.byethost.com';
+	// $server   = 'sql111.byethost.com';
 
-header('Access-Control-Allow-Origin: *');
-header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
-   $method = $_SERVER['REQUEST_METHOD'];
-   if ($method == "OPTIONS") {
-       die();
-   }
+	header('Access-Control-Allow-Origin: *');
+	header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
+	header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+		 $method = $_SERVER['REQUEST_METHOD'];
+		 if ($method == "OPTIONS") {
+				 die();
+		 }
 
 	$db = mysqli_connect($server, $user, $password, $base);
 
@@ -111,19 +112,9 @@ header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
     }
 	}
 
-	if ((isset($_GET['valor'])) && ($_GET['valor']==='5'))
-  {
-		echo json_encode('Conectado desde Ionic');
-	}
-
-	if ((isset($request->action)) &&  ($request->action==='ionic'))
-  {
-		echo json_encode('Conectado desde Ionic');
-	}
-
 	if ((isset($_GET['valor'])) && ($_GET['valor']==='4'))
   {
-    $sql = mysqli_query($db,'SELECT name FROM articulos_despensa');
+    $sql = mysqli_query($db,'SELECT * FROM articulos_despensa');
 		$datos =mysqli_num_rows($sql);
 		if ($datos===0){
 			echo json_encode($datos);
@@ -131,11 +122,16 @@ header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
 			$datos=array();
 			while($fila =mysqli_fetch_array($sql) )
 			{
-				array_push($datos,$fila['name']);
+				array_push($datos,$fila);
 			}
 			echo json_encode($datos);
 		}
 		//echo json_encode('SELECT * FROM articulos_despensa WHERE name like "%' . $_GET['name'] . '%"');
+	}
+
+	if ((isset($_GET['valor'])) && ($_GET['valor']==='5'))
+  {
+		echo json_encode('Conectado desde Ionic');
 	}
 
 ?>

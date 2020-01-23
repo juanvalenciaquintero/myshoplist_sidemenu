@@ -7,6 +7,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 export class TaskService {
 
 	private url = 'http://estadisticas.dx.am';
+	// private url = 'http://myshoplist.is-best.net';
 
 	constructor(public http: HttpClient)
 	{

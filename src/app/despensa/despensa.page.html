@@ -1,9 +1,25 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Despensa</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Despensa
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+	<div id="tablaDespensa">
+		<table class="table table-striped tabla_principal" id="articulos" cellpadding="0" cellspacing="0">
+			<tbody>
+				<tr *ngFor="let articulo of articulosDespensa; let odd = odd" [ngClass]="{odd:odd}">
+				 <td><button class="btnComp" (click)='itemPurchased(articulo.name)'>Eliminar</button></td>
+				 <td><button class="btnComp" (click)='itemPurchased(articulo.name)'>Modificar</button></td>
+				<td>{{ articulo.name }}</td>
+			</tr>
+		</tbody>
+		</table>
+	</div>
 
 </ion-content>

@@ -16,7 +16,7 @@
 
 			<!-- <button (click)='checkArt(artic.value)'>Añadir a la lista</button> -->
 			<!-- <button >Añadir</button> -->
-			<button (click)="addArticleDesp();">Añadir</button>
+			<button id="btnAdd" (click)="addArticleDesp();">Añadir</button>
 
 			 <div #listaArticulos *ngIf="visible" class="visible" >
 						<div *ngFor="let encontrado of lista" (click)="selectArt($event);"> {{encontrado}} </div>
@@ -29,21 +29,20 @@
 		<table class="table table-striped tabla_principal" id="articulos" cellpadding="0" cellspacing="0">
 			<tbody>
 				<tr *ngFor="let articulo of articulos; let odd = odd" [ngClass]="{odd:odd}">
-				 <td><button (click)='itemPurchased(articulo.id)'>Comprado</button></td>
-
+				 <td><button class="btnComp" (click)='itemPurchased(articulo.id)'>Comprado</button></td>
 				<td>{{ articulo.name }}</td>
-
-
 			</tr>
-
 		</tbody>
 		</table>
 
-		<h2>Artículos comprados</h2>
-		<button (click)="deleteArt();">Eliminar comprados</button>
+		<div id="comprados">
+			<h2>Artículos comprados</h2>
+			<button class="btnComp" (click)="deleteArt();">Eliminar comprados</button>
+		</div>
 		<table class="table table-striped tabla_principal" id="articulosComp" cellpadding="0" cellspacing="0">
 				<tbody>
 					<tr *ngFor="let articulo of articulosComp; let odd = odd" [ngClass]="{odd:odd}">
+						<td><button class="btnComp" (click)='itemPurchased(articulo.id)'>Deshacer</button></td>
 						<td>{{ articulo.name }}</td>
 					</tr>
 			</tbody>
