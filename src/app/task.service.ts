@@ -139,5 +139,22 @@ export class TaskService {
 			});
 		});
     //return this.http.post(path, param, this.httpOptions);
-  }
+	}
+
+	getAllArticlesDespensa()
+  {
+    // const path = '/myshoplist.php?valor=2';
+		// return this.http.get<Article[]>(path);
+		return new Promise(resolve => {
+			this.http.get(this.url+'/myshoplist.php?valor=4')
+				.subscribe(data =>
+				{
+				resolve(data);
+			}, err => {
+				console.log(err);
+			});
+		});
+	}
+
+
 }
