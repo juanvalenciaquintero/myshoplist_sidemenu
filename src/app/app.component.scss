@@ -48,7 +48,7 @@
 
 #articulos td:first-child, #articulosComp td:first-child, #tablaDespensa td:first-child, #tablaDespensa td:nth-child(2)
 {
-  width:80px;
+  width:40px;
 }
 
 #articulos td, #articulosComp td, #tablaDespensa td
@@ -56,6 +56,7 @@
   border-collapse: collapse;
   padding:10px 10px;
 }
+
 
 #listaArticulos
 {
@@ -69,11 +70,27 @@ top:100px;
 	border: 1px solid #aaa;
 }
 
+.icono
+{
+	width:25px;
+	height:25px;
+}
+
 .btnComp
 {
 	height:18px;
 	border: 1px solid #aaa;
 	border-radius: 5px 5px;;
+}
+
+#btnEdit
+{
+	width:18px;
+}
+
+#btnDelete
+{
+	width:18px;
 }
 
 #comprados
@@ -85,7 +102,7 @@ top:100px;
 h2
 {
 	padding:10px;
-	width:60%;
+	width:85%;
 	display:inline-block;
 }
 

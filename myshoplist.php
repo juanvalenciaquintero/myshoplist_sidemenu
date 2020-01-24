@@ -82,9 +82,13 @@
 
   if ((isset($request->action)) &&  ($request->action==='insert'))
   {
-    $articulo = $request->artic;
-    // $query = 'INSERT INTO articulos_lista (nombre,id_lista,fecha,cantidad,comprado) VALUES ("' . $articulo . '",3,now(),4,1)';
-    $sql = mysqli_query($db,'INSERT INTO articulos_lista (id_articulo,id_lista,fecha,cantidad,comprado) VALUES (' . $articulo . ',1,now(),1,0)');
+		$articulo = $request->artic;
+		$sql = mysqli_query($db,'SELECT * FROM articulos_lista WHERE id_articulo=' . $articulo . ' AND comprado=0');
+		if (mysqli_num_rows($sql)===0)
+		{
+			// $query = 'INSERT INTO articulos_lista (nombre,id_lista,fecha,cantidad,comprado) VALUES ("' . $articulo . '",3,now(),4,1)';
+			$sql = mysqli_query($db,'INSERT INTO articulos_lista (id_articulo,id_lista,fecha,cantidad,comprado) VALUES (' . $articulo . ',1,now(),1,0)');
+		}
 	}
 
 	if ((isset($request->action)) &&  ($request->action==='insertDesp'))
@@ -129,9 +133,11 @@
 		//echo json_encode('SELECT * FROM articulos_despensa WHERE name like "%' . $_GET['name'] . '%"');
 	}
 
-	if ((isset($_GET['valor'])) && ($_GET['valor']==='5'))
+	if ((isset($request->action)) &&  ($request->action==='updatePurchased'))
   {
-		echo json_encode('Conectado desde Ionic');
+		$articulo = $request->artic;
+		$sql=mysqli_query($db,'DELETE FROM articulos_lista WHERE id_articulo=' . $articulo . ' AND  comprado=1');
+		$sql = mysqli_query($db,'INSERT INTO articulos_lista (id_articulo,id_lista,fecha,cantidad,comprado) VALUES (' . $articulo . ',1,now(),1,0)');
 	}
 
 ?>

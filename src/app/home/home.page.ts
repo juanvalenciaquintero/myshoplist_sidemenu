@@ -136,5 +136,15 @@ export class HomePage implements OnInit {
       this.getAllArticles();
       this.getAllArticlesPurchased();
     });
-  }
+	}
+
+	returnItemPurchased(articulo)
+	{
+		console.log('Anular: ' + articulo);
+		this.taskService.returnItemPurchased(articulo)
+    .then(data => {
+      this.getAllArticles();
+      this.getAllArticlesPurchased();
+    });
+	}
 }

@@ -31,4 +31,14 @@ export class DespensaPage implements OnInit {
 		console.log(articulo);
 	}
 
+	editar(articulo)
+	{
+		console.log(articulo);
+	}
+
+	borrar(articulo)
+	{
+		console.log(articulo);
+	}
+
 }
