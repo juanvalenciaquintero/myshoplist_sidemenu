@@ -140,4 +140,11 @@
 		$sql = mysqli_query($db,'INSERT INTO articulos_lista (id_articulo,id_lista,fecha,cantidad,comprado) VALUES (' . $articulo . ',1,now(),1,0)');
 	}
 
+	if ((isset($request->action)) &&  ($request->action==='deleteArtDespensa'))
+  {
+		$articulo = $request->artic;
+		$sql=mysqli_query($db,'DELETE FROM articulos_despensa WHERE id=' . $articulo );
+		echo json_encode('DELETE FROM articulos_despensa WHERE id_articulo=' . $articulo);
+	}
+
 ?>

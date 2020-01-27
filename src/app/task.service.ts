@@ -177,5 +177,24 @@ export class TaskService {
 		});
 	}
 
+	deleteArticleDespensa(articulo: number)
+	{
+		const path = this.url +'/myshoplist.php';
+    let param =
+    {
+      'action': 'deleteArtDespensa',
+      'artic' : articulo
+		}
+		return new Promise(resolve =>
+			{
+				this.http.post(path, param)
+					.subscribe(data =>
+				{
+				resolve(data);
+			}, err => {
+				console.log(err);
+			});
+		});
 
+	}
 }

@@ -1,18 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy,AfterViewInit } from '@angular/core';
 import { TaskService } from './../task.service';
+import { Platform } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss','./../app.component.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit, OnDestroy, AfterViewInit {
 
 	articulos: any;
 	articulosComp: any;
 	lista: string[];
 	visible = false;
-	constructor(public taskService: TaskService)
+	backButtonSubscription;
+	constructor(public taskService: TaskService,private platform: Platform)
 	{
 		this.getAllArticles();
 		this.getAllArticlesPurchased();
@@ -146,5 +149,19 @@ export class HomePage implements OnInit {
       this.getAllArticles();
       this.getAllArticlesPurchased();
     });
+	}
+
+
+	ngAfterViewInit()
+	{
+		this.backButtonSubscription = this.platform.backButton.subscribe(()=>
+		{
+			navigator['app'].exitApp();
+		});
+	}
+
+	ngOnDestroy()
+	{
+		this.backButtonSubscription.unsubscribe();
 	}
 }

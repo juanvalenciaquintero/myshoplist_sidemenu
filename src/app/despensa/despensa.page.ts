@@ -1,5 +1,7 @@
 import { TaskService } from './../task.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy,AfterViewInit } from '@angular/core';
+import { Platform } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-despensa',
@@ -8,9 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DespensaPage implements OnInit {
 
+	backButtonSubscription;
 	articulosDespensa: any;
 
-  constructor(public taskService: TaskService) { }
+  constructor(public taskService: TaskService,private platform: Platform,private router: Router) { }
 
 	ngOnInit()
 	{
@@ -34,11 +37,28 @@ export class DespensaPage implements OnInit {
 	editar(articulo)
 	{
 		console.log(articulo);
+
 	}
 
 	borrar(articulo)
 	{
-		console.log(articulo);
+		this.taskService.deleteArticleDespensa(articulo)
+    .then(data => {
+      this.getAllArticlesDespensa();
+    });
+	}
+
+	ngAfterViewInit()
+	{
+		this.backButtonSubscription = this.platform.backButton.subscribe(()=>
+		{
+			this.router.navigate(['/home'])
+		});
+	}
+
+	ngOnDestroy()
+	{
+		this.backButtonSubscription.unsubscribe();
 	}
 
 }

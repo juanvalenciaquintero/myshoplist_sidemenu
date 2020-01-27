@@ -1,4 +1,4 @@
-import { Component,OnInit,OnDestroy,AfterViewInit } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -9,10 +9,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
 })
-export class AppComponent implements OnInit, OnDestroy, AfterViewInit
+export class AppComponent
 {
 
-	backButtonSubscription;
 
   public appPages = [
     {
@@ -41,18 +40,5 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit
       this.splashScreen.hide();
     });
 	}
-	ngOnInit() { }
 
-	ngAfterViewInit()
-	{
-		this.backButtonSubscription = this.platform.backButton.subscribe(()=>
-		{
-			navigator['app'].exitApp();
-		});
-	}
-
-	ngOnDestroy()
-	{
-		this.backButtonSubscription.unsubscribe();
-	}
 }
