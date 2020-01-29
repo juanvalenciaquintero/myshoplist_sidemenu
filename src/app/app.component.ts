@@ -31,7 +31,8 @@ export class AppComponent
     private splashScreen: SplashScreen,
     private statusBar: StatusBar
   ) {
-    this.initializeApp();
+		this.initializeApp();
+
   }
 
   initializeApp() {
