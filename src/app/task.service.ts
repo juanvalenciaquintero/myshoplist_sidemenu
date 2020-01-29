@@ -157,6 +157,21 @@ export class TaskService {
 		});
 	}
 
+	getArticleDespensa(article)
+  {
+    // const path = '/myshoplist.php?valor=2';
+		// return this.http.get<Article[]>(path);
+		return new Promise(resolve => {
+			this.http.get(this.url+'/myshoplist.php?valor=5&id='+article)
+				.subscribe(data =>
+				{
+				resolve(data);
+			}, err => {
+				console.log(err);
+			});
+		});
+	}
+
 	returnItemPurchased(articulo: number)
 	{
 		const path = this.url +'/myshoplist.php';
