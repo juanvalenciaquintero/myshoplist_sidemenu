@@ -21,10 +21,10 @@
 	header('Access-Control-Allow-Origin: *');
 	header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
 	header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
-	$method = $_SERVER['REQUEST_METHOD'];
-	if ($method == "OPTIONS") {
-			die();
-	}
+		 $method = $_SERVER['REQUEST_METHOD'];
+		 if ($method == "OPTIONS") {
+				 die();
+		 }
 
 	$db = mysqli_connect($server, $user, $password, $base);
 
@@ -145,6 +145,17 @@
 		$articulo = $request->artic;
 		$sql=mysqli_query($db,'DELETE FROM articulos_despensa WHERE id=' . $articulo );
 		echo json_encode('DELETE FROM articulos_despensa WHERE id_articulo=' . $articulo);
+	}
+
+	if ((isset($_GET['valor'])) && ($_GET['valor']==='5'))
+  {
+		$id = $_GET['id'];
+		$sql = mysqli_query($db,'SELECT * FROM articulos_despensa  WHERE id=' . $id);
+		$datos =mysqli_num_rows($sql);
+		$fila =mysqli_fetch_object($sql);
+		$datos=array();
+		array_push($datos,$fila);
+		echo json_encode($fila);
 	}
 
 ?>
