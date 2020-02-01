@@ -46,10 +46,11 @@
  // border: 1px solid;
 }
 
-#articulos td:first-child, #articulosComp td:first-child, #tablaDespensa td:first-child, #tablaDespensa td:nth-child(2)
+#articulos td:first-child, #articulosComp td:first-child, #tablaDespensa td:first-child, #tablaDespensa td:nth-child(2), #articulos td:last-child
 {
   width:40px;
 }
+
 
 #articulos td, #articulosComp td, #tablaDespensa td
 {

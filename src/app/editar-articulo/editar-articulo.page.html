@@ -11,7 +11,28 @@
 
 
 <ion-content>
-Artículo:{{articulosDespensa.id}}
+	<div *ngIf="articulo">
+		<div>
+			<label>Artículo:</label> <input type="text" value="{{articulo.name}}">
+		</div>
+		<div>
+			<label>Marca:</label> <input type="text" value="{{articulo.brand}}">
+		</div>
+		<div>
+			<label>Supermercado:</label> <input type="text" value="{{articulo.supermarket}}">
+		</div>
+		<div>
+			<label>Precio:</label> <input type="text" value="{{articulo.price}}">
+		</div>
+		<div>
+			<label>Fecha de alta:</label> <input type="date" value="{{articulo.price}}">
+		</div>
+		<div id="botones">
+			<button id="cancelar" (click)="volver();">Cancelar</button>
+			<button id="actualizar" >Actualizar</button>
+		</div>
+	</div>
+<!-- Artículo:{{articulo.name}} -->
 <!-- <table class="table table-striped tabla_principal" id="articulos" cellpadding="0" cellspacing="0">
 	<tbody>
 		<tr *ngFor="let articulo of articulosDespensa; let odd = odd" [ngClass]="{odd:odd}">

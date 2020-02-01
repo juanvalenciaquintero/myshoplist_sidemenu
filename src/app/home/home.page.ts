@@ -141,6 +141,15 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
     });
 	}
 
+	deleteArtUnic(articulo)
+	{
+		this.taskService.deleteArtUnic(articulo)
+    .then(data => {
+      this.getAllArticles();
+      this.getAllArticlesPurchased();
+    });
+	}
+
 	returnItemPurchased(articulo)
 	{
 		console.log('Anular: ' + articulo);
