@@ -16,7 +16,7 @@
 			<input type="text" id="artic" name="artic" (keyup)='checkArt($event)'>
 			<button id="btnAdd" (click)="addArticleDesp();">Añadir</button>
 			<div #listaArticulos *ngIf="visible" class="visible">
-				<div *ngFor="let encontrado of lista" (click)="selectArt($event);"> {{encontrado}} </div>
+				<div *ngFor="let encontrado of lista" (click)="selectArt($event);" > {{encontrado}} </div>
 			</div>
 		</div>
 	</div>
@@ -29,7 +29,7 @@
 						<ion-icon class="icono" name="redo" (click)='itemPurchased(articulo.id)'></ion-icon>
 					</td>
 					<td>{{ articulo.name }}</td>
-					<td><ion-icon class="icono" name="close-circle" (click)="deleteArtUnic(articulo.id);"></ion-icon></td>
+					<td><ion-icon class="icono" name="close-circle" (click)="deleteArtUnic(articulo.id,articulo.name);"></ion-icon></td>
 				</tr>
 			</tbody>
 		</table>

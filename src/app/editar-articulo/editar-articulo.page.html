@@ -11,26 +11,30 @@
 
 
 <ion-content>
-	<div *ngIf="articulo">
+	<div *ngIf="articulo" id="articuloDespensa">
 		<div>
-			<label>Artículo:</label> <input type="text" value="{{articulo.name}}">
-		</div>
-		<div>
-			<label>Marca:</label> <input type="text" value="{{articulo.brand}}">
+			<span>Artículo:</span> <input type="text"  [(ngModel)]="articulo.name" value="{{articulo.name}}">
 		</div>
 		<div>
-			<label>Supermercado:</label> <input type="text" value="{{articulo.supermarket}}">
+			<span>Marca:</span> <input type="text" [(ngModel)]="articulo.brand" value="{{articulo.brand}}">
 		</div>
 		<div>
-			<label>Precio:</label> <input type="text" value="{{articulo.price}}">
+			<span>Supermercado:</span> <input type="text" [(ngModel)]="articulo.supermarket" value="{{articulo.supermarket}}">
 		</div>
 		<div>
-			<label>Fecha de alta:</label> <input type="date" value="{{articulo.price}}">
+			<span>Precio:</span> <input type="text" [(ngModel)]="articulo.price" value="{{articulo.price}}">
 		</div>
-		<div id="botones">
-			<button id="cancelar" (click)="volver();">Cancelar</button>
-			<button id="actualizar" >Actualizar</button>
+		<div>
+			<span>Fecha de alta:</span> <input type="date" [(ngModel)]="articulo.fecha" value="{{articulo.fecha}}">
 		</div>
+		<div>
+			<span>Pasillo:</span> <input type="text" [(ngModel)]="articulo.pasillo" value="{{articulo.pasillo}}">
+		</div>
+
+	</div>
+	<div id="botones">
+		<button id="cancelar" (click)="volver();">Cancelar</button>
+		<button id="actualizar" (click)="actualizar(articulo);" >Actualizar</button>
 	</div>
 <!-- Artículo:{{articulo.name}} -->
 <!-- <table class="table table-striped tabla_principal" id="articulos" cellpadding="0" cellspacing="0">

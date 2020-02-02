@@ -235,6 +235,26 @@ export class TaskService {
 				console.log(err);
 			});
 		});
+	}
+
+	actualizar(articulo)
+	{
+		const path = this.url +'/myshoplist.php';
+    let param =
+    {
+      'action': 'updateArtUnic',
+      'artic' : articulo
+		}
+		return new Promise(resolve =>
+			{
+				this.http.post(path, param)
+					.subscribe(data =>
+				{
+				resolve(data);
+			}, err => {
+				console.log(err);
+			});
+		});
 
 	}
 }

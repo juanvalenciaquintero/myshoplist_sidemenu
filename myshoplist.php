@@ -158,4 +158,25 @@
 		echo json_encode($fila);
 	}
 
+if ((isset($request->action)) &&  ($request->action==='deleteArtUnic'))
+  {
+
+      $articulo = $request->artic;
+      $sql = mysqli_query($db,'DELETE FROM articulos_lista WHERE id_articulo=' . $articulo . ' AND  comprado=0');
+
+	}
+
+	if ((isset($request->action)) &&  ($request->action==='updateArtUnic'))
+  {
+		$articulo = $request->artic;
+		$sql = mysqli_query($db, 'UPDATE articulos_despensa
+						SET name="' . $articulo->name . '",
+								brand ="' . $articulo->brand . '",
+								supermarket="' . $articulo->supermarket . '",
+								price ="' . $articulo->price . '",
+								fecha="' . $articulo->fecha . '" WHERE id=' .$articulo->id);
+
+	}
+
+
 ?>

@@ -101,18 +101,7 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
       this.articulos = data;
       console.log(this.articulos);
 		});
-		// const url = 'http://estadisticas.dx.am/myshoplist.php?valor=1';
-		// 	const params = {};
-		// 	const headers = {};
 
-		// 	this.http.get(url, params, headers)
-		// 		.then(data =>
-		// 		{
-		// 			console.log(data.status);
-		// 			console.log(JSON.parse(data.data)); // JSON data returned by server
-		// 			console.log(data.headers);
-		// 			this.articulos = data;
-		// 		});
 	}
 
 	getAllArticlesPurchased() {
@@ -141,13 +130,17 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
     });
 	}
 
-	deleteArtUnic(articulo)
+	deleteArtUnic(articulo,nombre)
 	{
-		this.taskService.deleteArtUnic(articulo)
-    .then(data => {
-      this.getAllArticles();
-      this.getAllArticlesPurchased();
-    });
+		if (confirm("¿Quieres eliminar '" + nombre + "' de la lista?"))
+		{
+			this.taskService.deleteArtUnic(articulo)
+				.then(data =>
+				{
+					this.getAllArticles();
+					this.getAllArticlesPurchased();
+				});
+		};
 	}
 
 	returnItemPurchased(articulo)

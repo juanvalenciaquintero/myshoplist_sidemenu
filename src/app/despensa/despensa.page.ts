@@ -17,7 +17,7 @@ export class DespensaPage implements OnInit {
 
 	ngOnInit()
 	{
-		this.getAllArticlesDespensa();
+
 	}
 
 
@@ -50,6 +50,8 @@ export class DespensaPage implements OnInit {
 
 	ngAfterViewInit()
 	{
+		this.getAllArticlesDespensa();
+
 		this.backButtonSubscription = this.platform.backButton.subscribe(()=>
 		{
 			this.router.navigate(['/home'])

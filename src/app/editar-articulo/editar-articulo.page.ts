@@ -7,13 +7,13 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-editar-articulo',
   templateUrl: './editar-articulo.page.html',
-  styleUrls: ['./editar-articulo.page.scss'],
+  styleUrls: ['./editar-articulo.page.scss','./../app.component.scss'],
 })
 export class EditarArticuloPage implements OnInit {
 
 	backButtonSubscription;
 	id: number;
-	@Input()	articulo: any;
+	articulo: any;
 	articulosDespensa: any;
 
 
@@ -21,13 +21,7 @@ export class EditarArticuloPage implements OnInit {
 
 	ngOnInit()
 	{
-		// this.id = this.rutaActiva.snapshot.params.id;
-		// console.log('ID: ' + this.id);
 		 this.getArticleDespensa();
-		// console.log(this.articulo);
-		//this.getAllArticlesDespensa();
-
-
 	}
 
 	getAllArticlesDespensa()
@@ -56,13 +50,16 @@ export class EditarArticuloPage implements OnInit {
 					console.log(error);
 				}
 		)
-		// this.taskService.getArticleDespensa(this.id)
-    // .then(data => {
-		// 	art = data;
-		// 	this.articulo.subscribe(data);
-		// 	console.log(data);
-    //   console.log(this.articulo);
-		// });
+	}
+
+	actualizar()
+	{
+		console.log(this.articulo);
+		this.taskService.actualizar(this.articulo)
+      .then(data =>
+			{
+				this.router.navigate(['/despensa']);
+      });
 	}
 
 	volver()
