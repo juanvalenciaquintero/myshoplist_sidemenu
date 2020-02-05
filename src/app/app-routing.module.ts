@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -22,7 +22,12 @@ const routes: Routes = [
   {
     path: 'editar/:id',
     loadChildren: () => import('./editar-articulo/editar-articulo.module').then( m => m.EditarArticuloPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   }
+
 
 ];
 

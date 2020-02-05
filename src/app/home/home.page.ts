@@ -165,5 +165,12 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
 	ngOnDestroy()
 	{
 		this.backButtonSubscription.unsubscribe();
-	}
+  }
+
+  doRefresh(event)
+  {
+    this.getAllArticles();
+    this.getAllArticlesPurchased();
+
+  }
 }

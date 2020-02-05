@@ -10,6 +10,45 @@
   justify-content: center; */
 }
 
+#loginContainer
+{
+  width:70%;
+  margin:50px auto;
+  height:150px;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#userContainer, #passContainer
+{
+  width:100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+#userContainer div:first-child, #passContainer div:first-child, #userContainer span, #passContainer span
+{
+  width:30%;
+}
+#userContainer div:last-child, #passContainer div:last-child
+{
+  width:70%;
+}
+
+#userContainer input, #passContainer input
+{
+  width:100%;
+}
+
+
+#userContainer>div, #passContainer>div
+{
+  text-align: center;
+}
+
+
 #formulario
 {
   box-sizing: border-box;
@@ -169,7 +208,7 @@ h2
 	width:70%;
 }
 
-#botones
+#botones, #botonesLogin
 {
 	width:100%;
 	display:flex;
@@ -177,7 +216,7 @@ h2
 	align-items: center;
 }
 
-#botones button
+#botones button, #botonesLogin #btnLogin
 {
 	width:100px;
 	height:30px;

@@ -1,5 +1,5 @@
 import { TaskService } from './../task.service';
-import { Component, OnInit,OnDestroy,AfterViewInit } from '@angular/core';
+import { Component, Input,OnInit,OnDestroy,AfterViewInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Router } from '@angular/router';
 
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class DespensaPage implements OnInit {
 
 	backButtonSubscription;
-	articulosDespensa: any;
+	@Input() articulosDespensa: any;
 
   constructor(public taskService: TaskService,private platform: Platform,private router: Router) { }
 
@@ -27,6 +27,7 @@ export class DespensaPage implements OnInit {
       this.articulosDespensa = data;
       console.log(this.articulosDespensa);
     });
+
 	}
 
 	itemPurchased(articulo)
@@ -61,6 +62,20 @@ export class DespensaPage implements OnInit {
 	ngOnDestroy()
 	{
 		this.backButtonSubscription.unsubscribe();
-	}
+  }
+
+  ionViewWillEnter(){
+   this.getAllArticlesDespensa();
+  }
+
+  doRefresh(event)
+  {
+    this.getAllArticlesDespensa();
+    setTimeout(() =>
+    {
+      event.target.complete();
+    }, 500);
+
+  }
 
 }
