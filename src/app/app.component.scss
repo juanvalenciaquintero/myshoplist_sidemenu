@@ -28,14 +28,11 @@
   justify-content: center;
   align-items: center;
 }
-#userContainer div:first-child, #passContainer div:first-child, #userContainer span, #passContainer span
+#userContainer div, #passContainer div, #userContainer span, #passContainer span
 {
-  width:30%;
+  width:100%;
 }
-#userContainer div:last-child, #passContainer div:last-child
-{
-  width:70%;
-}
+
 
 #userContainer input, #passContainer input
 {
@@ -125,6 +122,13 @@ top:100px;
 	height:18px;
 	border: 1px solid #aaa;
 	border-radius: 5px 5px;;
+}
+
+#user, #pass
+{
+	height:35px;
+	border: none;
+  border-bottom: 1px solid #eee;
 }
 
 #btnEdit

@@ -257,4 +257,25 @@ export class TaskService {
 		});
 
 	}
+
+	checklogin(usuario,password)
+	{
+		const path = this.url +'/myshoplist.php';
+    let param =
+    {
+      'action'  : 'checkLogin',
+			'usuario': usuario,
+			'password' : password
+		}
+		return new Promise(resolve =>
+			{
+				this.http.post(path, param)
+					.subscribe(data =>
+				{
+				resolve(data);
+			}, err => {
+				console.log(err);
+			});
+		});
+	}
 }

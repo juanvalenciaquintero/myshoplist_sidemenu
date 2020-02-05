@@ -178,5 +178,25 @@ if ((isset($request->action)) &&  ($request->action==='deleteArtUnic'))
 
 	}
 
+	if ((isset($request->action)) &&  ($request->action==='checkLogin'))
+  {
+		$usuario = $request->usuario;
+		$password = $request->password;
+
+		$sql = mysqli_query($db,'SELECT * FROM usuarios  WHERE nombre="' . $usuario . '"' );
+		$datos =mysqli_fetch_object($sql);
+		$existe = (password_verify($password, $datos->pass));
+		echo json_encode($existe);
+	}
+
+	if (isset($_GET['pass']))
+  {
+		$nombre = $_GET['nombre'];
+		$pass = password_hash($nombre, PASSWORD_DEFAULT);
+
+		$sql = mysqli_query($db,'UPDATE usuarios SET pass="' .$pass . '" WHERE id=1');
+
+	}
+
 
 ?>
