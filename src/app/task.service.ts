@@ -278,4 +278,24 @@ export class TaskService {
 			});
 		});
 	}
+
+	checkUser(id)
+	{
+		const path = this.url +'/myshoplist.php';
+    let param =
+    {
+      'action': 'checkUser',
+      'user' : id
+		}
+		return new Promise(resolve =>
+			{
+				this.http.post(path, param)
+					.subscribe(data =>
+				{
+				resolve(data);
+			}, err => {
+				console.log(err);
+			});
+		});
+	}
 }

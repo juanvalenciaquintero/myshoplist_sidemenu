@@ -23,7 +23,12 @@ export class AppComponent
       title: 'Despensa',
       url: '/despensa',
       icon: 'cart'
-    }
+		},
+		{
+      title: 'Usuario',
+      url: '/user',
+      icon: 'person'
+		}
   ];
 
   constructor(

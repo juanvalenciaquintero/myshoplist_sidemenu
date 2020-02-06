@@ -184,9 +184,20 @@ if ((isset($request->action)) &&  ($request->action==='deleteArtUnic'))
 		$password = $request->password;
 
 		$sql = mysqli_query($db,'SELECT * FROM usuarios  WHERE nombre="' . $usuario . '"' );
-		$datos =mysqli_fetch_object($sql);
-		$existe = (password_verify($password, $datos->pass));
-		echo json_encode($existe);
+		if (mysqli_num_rows($sql)>0)
+		{
+			$datos =mysqli_fetch_object($sql);
+			$existe = (password_verify($password, $datos->pass));
+			if ($existe)
+			{
+				echo json_encode($datos->id);
+			}else{
+				echo json_encode('false');
+			}
+		} else
+		{
+			echo json_encode('false');
+		}
 	}
 
 	if (isset($_GET['pass']))
@@ -198,5 +209,12 @@ if ((isset($request->action)) &&  ($request->action==='deleteArtUnic'))
 
 	}
 
+	if ((isset($request->action)) &&  ($request->action==='checkUser'))
+  {
+		$usuario = $request->user;
+		$sql = mysqli_query($db,'SELECT * FROM usuarios  WHERE id=' . $usuario );
+		$datos =mysqli_fetch_object($sql);
+		echo json_encode($datos->nombre);
+	}
 
 ?>
