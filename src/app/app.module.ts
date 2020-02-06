@@ -1,3 +1,4 @@
+import { StorageService } from './services/storage.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -18,12 +19,13 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-		AppRoutingModule,
-		HttpClientModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
-		StatusBar,
+    StatusBar,
     SplashScreen,
+    StorageService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

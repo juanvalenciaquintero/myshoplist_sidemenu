@@ -19,6 +19,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  margin-bottom:10px;
 }
 
 #userContainer, #passContainer
@@ -45,6 +46,12 @@
   text-align: center;
 }
 
+#remember
+{
+ width:70%;
+ margin:0 auto;
+ margin-bottom: 30px;
+}
 
 #formulario
 {

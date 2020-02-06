@@ -1,6 +1,7 @@
 import { Component, OnInit,OnDestroy,AfterViewInit } from '@angular/core';
 import { TaskService } from './../task.service';
 import { Platform } from '@ionic/angular';
+import { StorageService } from './../services/storage.service';
 
 
 @Component({
@@ -15,13 +16,15 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
 	lista: string[];
 	visible = false;
 	backButtonSubscription;
-	constructor(public taskService: TaskService,private platform: Platform)
+	constructor(public storageService: StorageService,public taskService: TaskService,private platform: Platform)
 	{
 		this.getAllArticles();
 		this.getAllArticlesPurchased();
   }
 
-  ngOnInit() {
+  ngOnInit()
+  {
+    console.log(this.storageService.getLocal('loginRemember'));
 	}
 
 	checkArt(event: any): void
