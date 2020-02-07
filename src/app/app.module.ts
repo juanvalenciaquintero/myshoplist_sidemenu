@@ -1,3 +1,5 @@
+import { AuthService } from './auth/auth.service';
+import { AuthGuard } from './auth/auth.guard';
 import { StorageService } from './services/storage.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -26,6 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     StatusBar,
     SplashScreen,
     StorageService,
+    AuthService,
+    AuthGuard,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

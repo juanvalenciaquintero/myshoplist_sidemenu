@@ -20,11 +20,12 @@ export class LoginPage implements OnInit
 
   ngOnInit()
   {
-    console.log(this.storageService.getLocal('loginRemember'));
-    if (this.storageService.getLocal('loginRemember') === true)
-    {
-      this.router.navigate(['/home']);
-    }
+
+    // console.log(this.storageService.getLocal('loginRemember'));
+    // if (this.storageService.getLocal('loginRemember') === true)
+    // {
+    //   this.router.navigate(['/home']);
+    // }
   }
 
 
@@ -32,6 +33,8 @@ export class LoginPage implements OnInit
   {
     var element = <HTMLInputElement> document.getElementById("chkRemember");
     this.checkSeleccionado = element.checked;
+    console.log(this.user);
+    console.log(this.pass);
     this.taskService.checklogin(this.user,this.pass)
 			.then(data =>
       {
@@ -39,6 +42,7 @@ export class LoginPage implements OnInit
         if (data!=='false')
         {
           console.log(data);
+          this.storageService.setLocal('authorized', true);
           if (this.checkSeleccionado)
           {
 						this.storageService.setLocal('loginRemember', true);

@@ -19,7 +19,8 @@ export class UserPage implements OnInit {
 	{
 		this.id = this.storageService.getLocal('userId');
 		console.log(this.id);
-		this.taskService.checkUser(this.id).then(data =>
+    this.taskService.checkUser(this.id)
+      .subscribe(data =>
       {
 				console.log(data);
 			  this.user = data;

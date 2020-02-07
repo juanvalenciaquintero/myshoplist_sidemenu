@@ -162,17 +162,6 @@ export class TaskService {
 	getArticleDespensa(article)
 	{
 		return this.http.get(this.url + '/myshoplist.php?valor=5&id=' + article);
-    // const path = '/myshoplist.php?valor=2';
-		// return this.http.get<Article[]>(path);
-		// return new Promise(resolve => {
-		// 	this.http.get(this.url+'/myshoplist.php?valor=5&id='+article)
-		// 		.subscribe(data =>
-		// 		{
-		// 		resolve(data);
-		// 	}, err => {
-		// 		console.log(err);
-		// 	});
-		// });
 	}
 
 	returnItemPurchased(articulo: number)
@@ -277,25 +266,26 @@ export class TaskService {
 				console.log(err);
 			});
 		});
-	}
+  }
 
 	checkUser(id)
-	{
-		const path = this.url +'/myshoplist.php';
-    let param =
-    {
-      'action': 'checkUser',
-      'user' : id
-		}
-		return new Promise(resolve =>
-			{
-				this.http.post(path, param)
-					.subscribe(data =>
-				{
-				resolve(data);
-			}, err => {
-				console.log(err);
-			});
-		});
+  {
+    return this.http.get(this.url + '/myshoplist.php?valor=6&id=' + id);
+		// const path = this.url +'/myshoplist.php';
+    // let param =
+    // {
+    //   'action': 'checkUser',
+    //   'user' : id
+		// }
+		// return new Promise(resolve =>
+		// 	{
+		// 		this.http.post(path, param)
+		// 			.subscribe(data =>
+		// 		{
+		// 		resolve(data);
+		// 	}, err => {
+		// 		console.log(err);
+		// 	});
+		// });
 	}
 }
