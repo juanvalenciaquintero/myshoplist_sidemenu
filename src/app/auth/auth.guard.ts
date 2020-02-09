@@ -13,15 +13,14 @@ export class AuthGuard implements CanActivate
   canActivate()
   {
     console.log('Entrado en authGuard');
-    if (this.authService.checkRemember())
+    if (!this.authService.checkLogged())
     {
-      this.router.navigate(['/home']);
       return true;
-    } else
-    {
-      this.router.navigate(['/login']);
+		} else
+		{
+			this.router.navigate(['/home']);
       return false;
-    }
+		}
   }
 
 }

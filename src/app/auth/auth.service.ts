@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   remember: boolean;
-  authorized: boolean;
+	authorized: boolean;
+	logged: boolean;
 
   constructor(private storageService:StorageService) { }
 
@@ -27,5 +28,18 @@ export class AuthService {
       console.log('Salido de auth.service');
       return false;
     }
-  }
+	}
+
+	public checkLogged()
+	{
+		this.logged = this.storageService.getLocal('logged');
+		if (this.logged)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }

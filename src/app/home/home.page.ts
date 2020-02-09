@@ -25,9 +25,9 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit()
   {
     // this.storageService.setLocal('userId', '');
-    // this.storageService.setLocal('loginRemember', false);
+    // this.storageService.setLocal('logged', false);
 
-    console.log(this.storageService.getLocal('loginRemember'));
+    console.log(this.storageService.getLocal('logged'));
     console.log(this.storageService.getLocal('userId'));
 
 
