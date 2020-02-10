@@ -227,10 +227,46 @@ h2
 	align-items: center;
 }
 
-#botones button, #botonesLogin #btnLogin
+#botones button, #botonesLogin #btnLogin, #grabarPass
 {
 	width:100px;
-	height:30px;
+	height:40px;
 	border-radius: 3px;
 	font-size:15px;
+}
+
+ #grabarPass
+ {
+ width:200px;
+ }
+
+#datosUsuario
+{
+  margin:20px auto;
+  padding:10px;
+}
+
+#datosUsuario span
+{
+margin-right:10px;
+}
+
+#datosUsuario input
+{
+  padding:5px;
+  height:30px;
+}
+
+#newPassword
+{
+  margin-top: 20px;
+}
+#newPassword div
+{
+  padding:10px;
+}
+#newPassword div span, #newPassword div input
+{
+  display:inline-block;
+  min-width:150px;
 }

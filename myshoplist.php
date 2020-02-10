@@ -217,26 +217,24 @@ if ((isset($request->action)) &&  ($request->action==='deleteArtUnic'))
 		echo json_encode($datos);
 	}
 
-  // 	if ((isset($_GET['checkUser'])))
-  // {
-  //   $id = $_GET['checkUser'];
-	// 	$sql = mysqli_query($db,'SELECT * FROM usuarios  WHERE id=' . $id);
-	// 	$datos =mysqli_num_rows($sql);
-	// 	$fila =mysqli_fetch_object($sql);
-	// 	$datos=array();
-	// 	array_push($datos,$fila);
-	// 	echo json_encode($fila);
 
-    // $usuario = (int)$_GET['checkUser'];
-		// //$sql = mysqli_query($db,'SELECT * FROM usuarios  WHERE id=' . $usuario );
-    // $sqlTxt = "SELECT * FROM usuarios  WHERE id='" . $usuario . "'";
-    // $sql = mysqli_query($db,"SELECT * FROM usuarios  WHERE id=" . $usuario );
-		// $fila =mysqli_fetch_array($sql);
-    // $datos=array();
-		// array_push($datos,$fila);
-		// echo json_encode($fila['nombre']);
+if ((isset($request->action)) &&  ($request->action==='updateUser'))
+{
+  $usuario = $request->usuario;
+  $sql = mysqli_query($db,'UPDATE usuarios SET nombre="' . $usuario->nombre . '"  WHERE id=' . $usuario->id );
 
-  // }
+  echo json_encode($usuario->id);
+}
+
+if ((isset($request->action)) &&  ($request->action==='updatePass'))
+{
+  $usuario = $request->usuario;
+  $newPassword = $request->password;
+  $pass = password_hash($newPassword , PASSWORD_DEFAULT);
+  $sql = mysqli_query($db,'UPDATE usuarios SET pass="' . $pass . '"  WHERE id=' . $usuario->id );
+
+  echo json_encode($usuario->id);
+}
 
 
 ?>

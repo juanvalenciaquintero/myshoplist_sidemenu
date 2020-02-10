@@ -2,18 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { TaskService } from './../task.service';
 import { Platform } from '@ionic/angular';
 import { StorageService } from './../services/storage.service';
+import { Router } from '@angular/router';
+import { AuthService } from './../auth/auth.service';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.page.html',
-  styleUrls: ['./user.page.scss'],
+  styleUrls: ['./user.page.scss','./../app.component.scss'],
 })
 export class UserPage implements OnInit {
 
 	user: any;
-	id: number;
+  id: number;
+  password1: any;
+  password2: any;
+  newPassword: boolean = false;
+  backButtonSubscription;
 
-  constructor(public storageService: StorageService,public taskService: TaskService) { }
+  constructor(private authService: AuthService,private platform: Platform,public storageService: StorageService,public taskService: TaskService,private router: Router) { }
 
 	ngOnInit()
 	{
@@ -25,7 +31,56 @@ export class UserPage implements OnInit {
 				console.log(data);
 			  this.user = data;
       });
+  }
+
+  ngAfterViewInit()
+	{
+
+		this.backButtonSubscription = this.platform.backButton.subscribe(()=>
+		{
+			this.router.navigate(['/home'])
+		});
 	}
+
+	ngOnDestroy()
+	{
+		this.backButtonSubscription.unsubscribe();
+  }
+
+   desloguear()
+  {
+    if (this.authService.desloguear())
+    {
+      this.router.navigate(['/login']);
+    };
+  }
+
+  actualizar()
+  {
+    this.taskService.updateUser(this.user)
+      .then(data =>
+      {
+       console.log(data);
+      });
+  }
+
+  newPass()
+  {
+    this.newPassword = true;
+  }
+
+  updatePass()
+  {
+    if (this.password1 === this.password2)
+    {
+      this.taskService.updatePass(this.user,this.password1)
+        .then(data =>
+        {
+          console.log(data);
+        });
+      this.newPassword = false;
+    }
+  }
 
 
 }

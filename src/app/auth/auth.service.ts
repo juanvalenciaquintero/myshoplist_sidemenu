@@ -41,5 +41,11 @@ export class AuthService {
 		{
 			return false;
 		}
-	}
+  }
+
+  public desloguear()
+  {
+    this.storageService.setLocal('logged', false)
+    return true;
+  }
 }

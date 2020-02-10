@@ -271,21 +271,47 @@ export class TaskService {
 	checkUser(id)
   {
     return this.http.get(this.url + '/myshoplist.php?valor=6&id=' + id);
-		// const path = this.url +'/myshoplist.php';
-    // let param =
-    // {
-    //   'action': 'checkUser',
-    //   'user' : id
-		// }
-		// return new Promise(resolve =>
-		// 	{
-		// 		this.http.post(path, param)
-		// 			.subscribe(data =>
-		// 		{
-		// 		resolve(data);
-		// 	}, err => {
-		// 		console.log(err);
-		// 	});
-		// });
-	}
+  }
+
+  updateUser(user)
+  {
+    const path = this.url +'/myshoplist.php';
+    let param =
+    {
+      'action'  : 'updateUser',
+			'usuario': user
+		}
+		return new Promise(resolve =>
+			{
+				this.http.post(path, param)
+					.subscribe(data =>
+				{
+				resolve(data);
+			}, err => {
+				console.log(err);
+			});
+		});
+
+  }
+
+  updatePass(user, pass)
+  {
+    const path = this.url +'/myshoplist.php';
+    let param =
+    {
+      'action'  : 'updatePass',
+      'usuario': user,
+      'password' : pass
+		}
+		return new Promise(resolve =>
+			{
+				this.http.post(path, param)
+					.subscribe(data =>
+				{
+				resolve(data);
+			}, err => {
+				console.log(err);
+			});
+		});
+  }
 }
