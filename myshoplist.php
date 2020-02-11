@@ -38,7 +38,7 @@
 
   if ((isset($_GET['valor'])) && ($_GET['valor']==='1'))
   {
-    $sql = mysqli_query($db,'SELECT * FROM articulos_lista AL, articulos_despensa AD WHERE AL.id_articulo = AD.id AND AL.comprado =0 ');
+    $sql = mysqli_query($db,'SELECT * FROM articulos_lista AL, articulos_despensa AD WHERE AL.id_articulo = AD.id AND AL.comprado =0 order by pasillo asc, name ');
     $datos=array();
     while($fila =mysqli_fetch_object($sql) )
     {

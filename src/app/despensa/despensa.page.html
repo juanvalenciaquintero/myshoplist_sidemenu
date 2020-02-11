@@ -21,6 +21,7 @@
 
 				 <td><a routerLink="/editar/{{articulo.id}}"><ion-icon class="icono" name="create" (click)='editar(articulo.id);'></ion-icon></a></td>
 				 <td>{{ articulo.name }}</td>
+				 <td>{{ articulo.pasillo }}</td>
 				 <td><ion-icon class="icono" name="close-circle" (click)='borrar(articulo.id);'></ion-icon></td>
 			</tr>
 		</tbody>

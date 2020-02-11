@@ -59,7 +59,8 @@ export class UserPage implements OnInit {
   {
     this.taskService.updateUser(this.user)
       .then(data =>
-      {
+			{
+				alert('El usuario se ha modificado correctamente');
        console.log(data);
       });
   }
@@ -75,7 +76,8 @@ export class UserPage implements OnInit {
     {
       this.taskService.updatePass(this.user,this.password1)
         .then(data =>
-        {
+				{
+					alert('La contraseña se ha modificado correctamente');
           console.log(data);
         });
       this.newPassword = false;

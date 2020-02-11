@@ -168,10 +168,13 @@ h2
 
 .visible
 {
-  width:175px;
+	width:100%;
+
+	z-index:10;
+	left:0;
   display:block;
   border:1px solid #ccc;
-  background-color:#eee;
+  background-color:#ececec;
   position: absolute;
 	cursor:pointer;
 	border-radius: 0 0 5px 5px;
@@ -179,7 +182,8 @@ h2
 
 .visible div
 {
-  padding:5px 10px;
+	padding:12px 10px;
+	height:40px;
 }
 
 .visible div:hover
