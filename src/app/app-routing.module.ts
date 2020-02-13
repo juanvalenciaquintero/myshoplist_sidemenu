@@ -47,7 +47,11 @@ const routes: Routes = [
     path: 'authchek',
     loadChildren: () => import('./authchek/authchek.module').then( m => m.AuthchekPageModule),
     canActivate: [AuthGuard]
+  },  {
+    path: 'nuevo-articulo',
+    loadChildren: () => import('./nuevo-articulo/nuevo-articulo.module').then( m => m.NuevoArticuloPageModule)
   }
+
 
 
 ];
