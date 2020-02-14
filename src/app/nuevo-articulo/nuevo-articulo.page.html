@@ -29,4 +29,9 @@
 			<span>Pasillo:</span> <input type="text" [(ngModel)]="articulo.pasillo" value="">
 		</div>
 </div>
+
+<div id="botones">
+		<button id="cancelar" (click)="volver();">Cancelar</button>
+		<button id="actualizar" (click)="nuevoArticulo(articulo);" >Actualizar</button>
+	</div>
 </ion-content>

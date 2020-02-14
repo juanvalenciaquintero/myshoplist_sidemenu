@@ -197,7 +197,7 @@ h2
   background-color: rgb(232, 235, 236);
 }
 
-#articuloDespensa
+#articuloDespensa, #nuevoArticuloDespensa
 {
 	width:90%;
 	margin: 0 auto;
@@ -205,20 +205,20 @@ h2
 	margin-bottom: 20px;
 }
 
-#articuloDespensa div
+#articuloDespensa div, #nuevoArticuloDespensa div
 {
 	padding:5px;
 	height:60px;
 }
 
-#articuloDespensa span
+#articuloDespensa span, #nuevoArticuloDespensa span
 {
 	display:inline-block;
 	width:25%;
 	min-width:110px;
 }
 
-#articuloDespensa input
+#articuloDespensa input, #nuevoArticuloDespensa input
 {
 	width:70%;
 }

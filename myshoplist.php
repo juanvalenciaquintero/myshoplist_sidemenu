@@ -236,5 +236,22 @@ if ((isset($request->action)) &&  ($request->action==='updatePass'))
   echo json_encode($usuario->id);
 }
 
+if ((isset($request->action)) &&  ($request->action==='nuevoArtDesp'))
+  {
+		$articulo = $request->artic;
+
+		$sql =  mysqli_query($db,'SELECT * FROM articulos_despensa WHERE name="' . $articulo->name . '"');
+
+		if (mysqli_num_rows($sql)===0)
+		{
+			$sql = mysqli_query($db,'INSERT INTO articulos_despensa (name,brand,dupermarket,price,fecha, pasillo) VALUES ("' . $articulo->name . '",now(),"' .  $articulo->brand .'","' .  $articulo->supermarket .'","' .  $articulo->price .'","' .  $articulo->fecha .'","' .  $articulo->pasillo .'")');
+			echo json_encode(mysqli_insert_id($db));
+		} else
+		{
+			$resp = mysqli_fetch_array($sql);
+			echo json_encode($resp['id']);
+		}
+	}
+
 
 ?>

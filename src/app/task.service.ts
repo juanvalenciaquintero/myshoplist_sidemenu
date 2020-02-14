@@ -314,4 +314,23 @@ export class TaskService {
 			});
 		});
   }
+
+  nuevoArt(articulo)
+  {
+    const path = this.url +'/myshoplist.php';
+    let param =
+    {
+      'action': 'nuevoArtDesp',
+      'artic' : articulo
+		}
+		return new Promise(resolve => {
+			this.http.post(path,param)
+				.subscribe(data =>
+				{
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+		});
+  }
 }
