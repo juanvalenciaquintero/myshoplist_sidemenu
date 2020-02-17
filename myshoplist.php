@@ -244,12 +244,16 @@ if ((isset($request->action)) &&  ($request->action==='nuevoArtDesp'))
 
 		if (mysqli_num_rows($sql)===0)
 		{
-			$sql = mysqli_query($db,'INSERT INTO articulos_despensa (name,brand,dupermarket,price,fecha, pasillo) VALUES ("' . $articulo->name . '",now(),"' .  $articulo->brand .'","' .  $articulo->supermarket .'","' .  $articulo->price .'","' .  $articulo->fecha .'","' .  $articulo->pasillo .'")');
-			echo json_encode(mysqli_insert_id($db));
+      $salida = 'INSERT INTO articulos_despensa (name,brand,supermarket,price,fecha, pasillo) VALUES ("' . $articulo->name . '",now(),"' .  $articulo->brand .'","' .  $articulo->supermarket .'","' .  $articulo->price .'","' .  $articulo->fecha .'","' .  $articulo->pasillo .'")';
+			$sql = mysqli_query($db,'INSERT INTO articulos_despensa (name,brand,supermarket,price,fecha, pasillo) VALUES ("' . $articulo->name . '","' .  $articulo->brand .'","' .  $articulo->supermarket .'","' .  $articulo->price .'","' .  $articulo->fecha .'","' .  $articulo->pasillo .'")');
+			echo json_encode($salida);
+      // echo json_encode(mysqli_insert_id($db));
 		} else
 		{
+      $salida = 'Articulo ya existe';
 			$resp = mysqli_fetch_array($sql);
-			echo json_encode($resp['id']);
+		echo json_encode($salida);
+      // echo json_encode($resp['id']);
 		}
 	}
 
