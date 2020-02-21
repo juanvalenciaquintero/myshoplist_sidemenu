@@ -50,6 +50,10 @@ const routes: Routes = [
   },  {
     path: 'nuevo-articulo',
     loadChildren: () => import('./nuevo-articulo/nuevo-articulo.module').then( m => m.NuevoArticuloPageModule)
+  },
+  {
+    path: 'historico-articulos',
+    loadChildren: () => import('./historico-articulos/historico-articulos.module').then( m => m.HistoricoArticulosPageModule)
   }
 
 

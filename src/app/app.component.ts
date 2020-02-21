@@ -23,8 +23,13 @@ export class AppComponent
       title: 'Despensa',
       url: '/despensa',
       icon: 'cart'
-		},
-		{
+    },
+    {
+      title: 'Historico',
+      url: '/historico-articulos',
+      icon: 'list'
+    },
+    {
       title: 'Usuario',
       url: '/user',
       icon: 'person'

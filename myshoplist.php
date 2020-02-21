@@ -77,8 +77,15 @@
 
   if ((isset($request->action)) &&  ($request->action==='update'))
   {
-		$sql = mysqli_query($db,'UPDATE articulos_lista SET comprado =1 WHERE id_articulo=' . $request->artic );
+    $usuario  = $request->usuario;
+    $articulo = $request->artic;
+		$sql = mysqli_query($db,'UPDATE articulos_lista SET comprado =1 WHERE id_articulo=' . $articulo );
+    $sql = mysqli_query($db,'SELECT * FROM articulos_lista WHERE id_articulo='. $articulo);
+    $result = mysqli_fetch_object($sql);
+    $sql = mysqli_query($db,'INSERT INTO articulos_comprados (id_articulo,cantidad,fecha_compra,user_id, id_lista) VALUES (' . $articulo . ',' . $result->cantidad . ', now(),' . $usuario . ',' . $result->id_lista . ')');
+
   }
+
 
   if ((isset($request->action)) &&  ($request->action==='insert'))
   {
@@ -209,7 +216,7 @@ if ((isset($request->action)) &&  ($request->action==='deleteArtUnic'))
 
 	}
 
-		if ((isset($_GET['valor'])) && ($_GET['valor']==='6'))
+	if ((isset($_GET['valor'])) && ($_GET['valor']==='6'))
   {
 		$usuario = $_GET['id'];
 		$sql = mysqli_query($db,'SELECT * FROM usuarios  WHERE id=' . $usuario );
@@ -255,6 +262,18 @@ if ((isset($request->action)) &&  ($request->action==='nuevoArtDesp'))
 		echo json_encode($salida);
       // echo json_encode($resp['id']);
 		}
+	}
+
+  if ((isset($_GET['valor'])) && ($_GET['valor']==='7'))
+  {
+		$sql = mysqli_query($db,"SELECT distinct(id_lista), DATE_FORMAT(fecha_compra, '%d-%m-%Y')as fecha FROM articulos_comprados GROUP BY fecha ORDER BY fecha_compra DESC ");
+    $datos=array();
+    while($fila =mysqli_fetch_array($sql) )
+    {
+      array_push($datos,$fila);
+    }
+    echo json_encode($datos);
+
 	}
 
 

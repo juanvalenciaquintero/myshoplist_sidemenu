@@ -102,25 +102,26 @@ export class TaskService {
 		});
 	}
 
-	updateArticle(articulo: number)
+	updateArticle(articulo: number, usuario:number)
   {
     const path = this.url + '/myshoplist.php';
     console.log(articulo);
     let param =
     {
-      'action': 'update',
-      'artic' : articulo
+      'action' : 'update',
+      'artic'  : articulo,
+      'usuario': usuario
 		}
 		return new Promise(resolve =>
 		{
 			this.http.post(path, param)
 				.subscribe(data =>
 			{
-			resolve(data);
-		}, err => {
-			console.log(err);
-		});
-	});
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+	  });
 	}
 
 	deleteArticles()
@@ -332,5 +333,10 @@ export class TaskService {
           console.log(err);
         });
 		});
+  }
+
+  checkLists()
+  {
+    return this.http.get(this.url + '/myshoplist.php?valor=7');
   }
 }

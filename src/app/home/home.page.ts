@@ -1,3 +1,4 @@
+import { Articulo } from './../interfaces/articulo';
 import { Component, OnInit,OnDestroy,AfterViewInit } from '@angular/core';
 import { TaskService } from './../task.service';
 import { Platform } from '@ionic/angular';
@@ -15,7 +16,9 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
 	articulosComp: any;
 	lista: string[];
 	visible = false;
-	backButtonSubscription;
+  backButtonSubscription;
+  usuario: number;
+  articulo: Articulo;
 	constructor(public storageService: StorageService,public taskService: TaskService,private platform: Platform)
 	{
 		this.getAllArticles();
@@ -29,7 +32,7 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
 
     console.log(this.storageService.getLocal('logged'));
     console.log(this.storageService.getLocal('userId'));
-
+    this.usuario = this.storageService.getLocal('userId');
 
 	}
 
@@ -123,7 +126,7 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
 
 	itemPurchased(articulo)
   {
-    this.taskService.updateArticle(articulo)
+    this.taskService.updateArticle(articulo,this.usuario)
     .then(data => {
       this.getAllArticles();
       this.getAllArticlesPurchased();
