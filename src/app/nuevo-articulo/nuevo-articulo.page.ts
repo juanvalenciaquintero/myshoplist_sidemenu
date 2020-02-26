@@ -22,9 +22,11 @@ export class NuevoArticuloPage implements OnInit {
     price: 0,
     fecha: new Date,
     pasillo: 0
-  };
+	};
+	prueba: any;
   constructor(private platform: Platform,private rutaActiva: ActivatedRoute,public taskService: TaskService,private router: Router)
   {
+
 
   }
 
