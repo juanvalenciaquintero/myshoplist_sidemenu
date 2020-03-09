@@ -20,7 +20,8 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
   usuario: number;
   articulo: Articulo;
 	constructor(public storageService: StorageService,public taskService: TaskService,private platform: Platform)
-	{
+  {
+    //this.chechNew();
 		this.getAllArticles();
 		this.getAllArticlesPurchased();
   }
@@ -184,5 +185,13 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
     this.getAllArticles();
     this.getAllArticlesPurchased();
 
+  }
+  chechNew()
+  {
+    this.taskService.checkNew(1)
+      .subscribe(data =>
+      {
+        console.log(data);
+      });
   }
 }
