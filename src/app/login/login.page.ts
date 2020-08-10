@@ -3,6 +3,7 @@ import { Usuario } from './../interfaces/usuario';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { TaskService } from './../task.service';
+import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
 
 @Component({
   selector: 'app-login',
@@ -15,12 +16,25 @@ export class LoginPage implements OnInit
 	user: string;
   pass: string;
 
-  constructor(public storageService: StorageService, public taskService: TaskService,private router: Router) { }
+  constructor(public storageService: StorageService, public taskService: TaskService,private router: Router,private faio: FingerprintAIO) { }
 
   ngOnInit()
   {
+
 		console.log(this.storageService.getLocal('logged'));
-		console.log(this.storageService.getLocal('userId'));
+    console.log(this.storageService.getLocal('userId'));
+    this.faio.show({
+      clientId: 'Fingerprint-demo',
+      clientSecret:'password'
+    })
+      .then(result =>
+      {
+        this.router.navigate(['/home']);
+      })
+      .catch(err =>
+      {
+        console.log('Error:' + err);
+      })
   }
 
 

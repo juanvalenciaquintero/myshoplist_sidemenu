@@ -12,6 +12,11 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+// import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
+
+import { AndroidFingerprintAuth } from '@ionic-native/android-fingerprint-auth/ngx';
+
+
 import { HttpClientModule } from '@angular/common/http';
 // import { HTTP } from '@ionic-native/http/ngx';
 
@@ -30,6 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
     StorageService,
     AuthService,
     AuthGuard,
+    AndroidFingerprintAuth,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

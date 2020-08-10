@@ -73,7 +73,8 @@ export class TaskService {
 
 	getAllArticles()
 	{
-    let path = 'http://juanvalencia.x10host.com/articulos/getAllArt';
+     const path =this.url +'/myshoplist.php?valor=1';
+    //let path = 'http://juanvalencia.x10host.com/articulos/getAllArt';
 		return new Promise(resolve => {
 			this.http.get(path )
 				.subscribe(data =>
@@ -89,8 +90,8 @@ export class TaskService {
 
 	getAllArticlesPurchased()
   {
-    let path = 'http://juanvalencia.x10host.com/articulos/getAllArtPurchased';
-    // const path = '/myshoplist.php?valor=2';
+    //let path = 'http://juanvalencia.x10host.com/articulos/getAllArtPurchased';
+     const path = this.url +'/myshoplist.php?valor=2';
 		// return this.http.get<Article[]>(path);
 		return new Promise(resolve => {
 			this.http.get(path)
