@@ -3,7 +3,7 @@ import { Usuario } from './../interfaces/usuario';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { TaskService } from './../task.service';
-import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
+// import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
 
 @Component({
   selector: 'app-login',
@@ -13,46 +13,46 @@ import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
 export class LoginPage implements OnInit
 {
 
-	user: string;
+  user: string;
   pass: string;
 
-  constructor(public storageService: StorageService, public taskService: TaskService,private router: Router,private faio: FingerprintAIO) { }
+  constructor(public storageService: StorageService, public taskService: TaskService,private router: Router) { }
 
   ngOnInit()
   {
 
-		console.log(this.storageService.getLocal('logged'));
+    console.log(this.storageService.getLocal('logged'));
     console.log(this.storageService.getLocal('userId'));
-    this.faio.show({
-      clientId: 'Fingerprint-demo',
-      clientSecret:'password'
-    })
-      .then(result =>
-      {
-        this.router.navigate(['/home']);
-      })
-      .catch(err =>
-      {
-        console.log('Error:' + err);
-      })
+    // this.faio.show({
+    //   clientId: 'Fingerprint-demo',
+    //   clientSecret:'password'
+    // })
+    //   .then(result =>
+    //   {
+    //     this.router.navigate(['/home']);
+    //   })
+    //   .catch(err =>
+    //   {
+    //     console.log('Error:' + err);
+    //   })
   }
 
 
-	checklogin()
+  checklogin()
   {
     this.taskService.checklogin(this.user,this.pass)
-			.then(data =>
+      .then(data =>
       {
-				console.log(data);
+        console.log(data);
         if (data!=='false')
         {
           console.log(data);
-					this.storageService.setLocal('logged', true);
-					this.storageService.setLocal('userId', data);
+          this.storageService.setLocal('logged', true);
+          this.storageService.setLocal('userId', data);
           this.router.navigate(['/home']);
         }
       });
 
-	}
+  }
 
 }

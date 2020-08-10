@@ -62,12 +62,12 @@ export class AppComponent
             {
               if (result.withFingerprint)
               {
-                alert("Successfully authenticated with fingerprint");
-                alert("Encrypt credentials: " + result.token);
+                // alert("Successfully authenticated with fingerprint");
+                // alert("Encrypt credentials: " + result.token);
                 this.router.navigate(['/home']);
               } else if (result.withBackup)
               {
-                alert("Succesfully authenticated with backup password");
+                // alert("Succesfully authenticated with backup password");
                 this.router.navigate(['/home']);
               } else
               {
