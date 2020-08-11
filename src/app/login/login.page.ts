@@ -23,6 +23,8 @@ export class LoginPage implements OnInit
 
     console.log(this.storageService.getLocal('logged'));
     console.log(this.storageService.getLocal('userId'));
+
+
     // this.faio.show({
     //   clientId: 'Fingerprint-demo',
     //   clientSecret:'password'
